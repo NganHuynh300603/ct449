@@ -1,13 +1,12 @@
 const express = require("express");
 const cors = require("cors");
 
-const app = express();
+
 const setupContactRoutes = require("./app/routes/contact.routes");
 
 const { BadRequestError, errorHandler } = require("./app/errors");
 
 const app = express();
-
 app.use(cors());
 
 // parese requests of content-type - application/json
@@ -35,7 +34,7 @@ app.use((err, req, res, next) => {
     // middleware xu ly loi tap trung
     //Trong cac doan code xu ly o cac route, goi next(error)
     // se chuyen ve middleware xu ly loi nay
-    errorHandler.handleError(error, res);
+    errorHandler.handleError(err, res);
 });
 
 module.exports = app;
